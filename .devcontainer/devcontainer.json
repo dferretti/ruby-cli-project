@@ -1,0 +1,14 @@
+{
+	"name": "Ruby",
+    "build": {
+		"dockerfile": "Dockerfile"
+	},
+	"postCreateCommand": "gem install thor exif && unzip -o gps_images.zip \"gps_images/*\" -d images",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"Shopify.ruby-lsp"
+			]
+		}
+	}
+}

@@ -5,8 +5,8 @@ class ExifExtractor < Thor
   # https://github.com/rails/thor/issues/244
   def self.exit_on_failure? = true
 
-  desc "test NAME", "test NAME"
-  def test(name)
+  desc "process", "test NAME"
+  def process(name = 'lol')
     puts "hello #{name}"
     begin
       data = Exif::Data.new(IO.read('images/gps_images/image_a.jpg'))
@@ -16,6 +16,7 @@ class ExifExtractor < Thor
       puts e
     end
   end
+  default_command :process
 
   private 
   # https://github.com/tonytonyjan/exif/issues/21

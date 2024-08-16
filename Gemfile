@@ -2,5 +2,6 @@
 
 source "https://rubygems.org"
 
- gem "thor", "1.3.1"
- gem "exif", "2.2.4"
+gem "debug"
+gem "exif", "2.2.4"
+gem "thor", "1.3.1"

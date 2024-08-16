@@ -1,3 +1,9 @@
+# USAGE
+
+`./exif-extractor.rb help process` to see all options
+
+Output can be specified with `-o` option or by piping output to a file like `./exif-extractor.rb > out.csv`. Warnings (if any) will be written to stderr and not present in the final output.
+
 # ruby-cli-project
 
 This is our first week's project where we will bring together the skills we've practiced so far:

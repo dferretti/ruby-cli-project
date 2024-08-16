@@ -51,12 +51,12 @@ class ExifExtractor < Thor
   end
 
   def write_file(target, output, force)
-    if !File.exist?(target)
+    unless File.exist?(target)
       File.write(target, output)
       return
     end
 
-    if !force
+    unless force
       STDERR.puts "Cannot overwrite existing file #{target}. Use --force to overwrite."
       exit 1 # thor seems to not be able to set exit codes, so I manually exit here with an exit code
     end
@@ -73,6 +73,7 @@ class ExifExtractor < Thor
   def read_file(file, quiet)
     data = Exif::Data.new(IO.read(file))
     return nil unless data.gps_longitude&.length == 3 && data.gps_latitude&.length == 3
+    
     {
       file:,
       latitude: geo_float(*data.gps_latitude).to_s + data.gps_latitude_ref,

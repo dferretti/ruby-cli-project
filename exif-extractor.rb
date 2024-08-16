@@ -2,7 +2,10 @@ require 'thor'
 require 'exif'
 
 class ExifExtractor < Thor
-  desc "test", "test NAME"
+  # https://github.com/rails/thor/issues/244
+  def self.exit_on_failure? = true
+
+  desc "test NAME", "test NAME"
   def test(name)
     puts "hello #{name}"
     begin
@@ -14,11 +17,12 @@ class ExifExtractor < Thor
     end
   end
 
-end
+  private 
+  # https://github.com/tonytonyjan/exif/issues/21
+  def geo_float(degrees, minutes, seconds)
+    degrees + minutes / 60.0 + seconds / 3600.0
+  end
 
-# https://github.com/tonytonyjan/exif/issues/21
-def geo_float(degrees, minutes, seconds)
-  degrees + minutes / 60.0 + seconds / 3600.0
 end
 
 ExifExtractor.start(ARGV)
